@@ -22,7 +22,7 @@ function App() {
             }}
             icon={<DownloadOutlined />}
           >
-            <Link to="/upload">상품 업로드</Link>
+            <Link to="/upload">商品アップロード</Link>
           </Button>
         </div>
       </div>
