@@ -1,10 +1,22 @@
-import { Divider, Form, Input, InputNumber, Button } from "antd";
+import { Divider, Form, Input, InputNumber, Button, Upload } from "antd";
 import "./index.css";
 import FormItem from "antd/es/form/FormItem";
+import { useState } from "react";
 
 function UploadPage() {
+  const [imageUrl, setImageUrl] = useState(null);
   const onFinish = (values) => {
     console.log(values);
+  };
+  const onChangeImage = (info) => {
+    if (info.file.status === "uploading") {
+      return;
+    }
+    if (info.file.status === "done") {
+      const response = info.file.response;
+      const imageUrl = response.imageUrl;
+      setImageUrl(imageUrl);
+    }
   };
   return (
     <div id="upload-container">
@@ -13,10 +25,22 @@ function UploadPage() {
           name="upload"
           label={<div className="upload-label">商品写真</div>}
         >
-          <div id="upload-img-placeholder">
-            <img src="/images/icons/camera.png" />
-            <span>イメージをアップロードしてください。</span>
-          </div>
+          <Upload
+            name="image"
+            action="http://localhost:8081/image"
+            listType="picture"
+            showUploadList={false}
+            onChange={onChangeImage}
+          >
+            {imageUrl ? (
+              <img id="upload-img" src={`http://localhost:8081/${imageUrl}`} />
+            ) : (
+              <div id="upload-img-placeholder">
+                <img src="/images/icons/camera.png" />
+                <span>イメージをアップロードしてください。</span>
+              </div>
+            )}
+          </Upload>
         </Form.Item>
         <Divider />
         <Form.Item
