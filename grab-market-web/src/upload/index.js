@@ -1,12 +1,23 @@
-import { Divider, Form, Input, InputNumber, Button, Upload } from "antd";
+import {
+  Divider,
+  Form,
+  Input,
+  InputNumber,
+  Button,
+  Upload,
+  message,
+} from "antd";
 import "./index.css";
 import FormItem from "antd/es/form/FormItem";
 import { useState } from "react";
 import { API_URL } from "../config/constants";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function UploadPage() {
   const [imageUrl, setImageUrl] = useState(null);
+  //↓ ReactHookではuseHistoryを使ってページ遷移を行う
+  const history = useHistory();
   const onFinish = (values) => {
     axios
       .post(`${API_URL}/products`, {
@@ -18,12 +29,12 @@ function UploadPage() {
       })
       .then((result) => {
         console.log(result);
-        alert("商品が登録されました。");
-        window.location.href = `/products/${result.data.id}`;
+        //↓ 상품 등록이 성공했을 때 메인페이지로 이동
+        history.replace("/");
       })
       .catch((error) => {
         console.error(error);
-        alert("商品登録に失敗しました。");
+        message.error(`エラーが発生しました。${error.message}`);
       });
   };
   const onChangeImage = (info) => {
