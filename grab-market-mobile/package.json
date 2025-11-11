@@ -9,6 +9,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "axios": "^1.13.2",
+    "dayjs": "^1.11.19",
     "expo": "~54.0.23",
     "expo-dev-client": "~6.0.17",
     "expo-status-bar": "~3.0.8",
