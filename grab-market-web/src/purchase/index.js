@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import PurchaseHeader from './components/PurchaseHeader';
 import CartItem from './components/CartItem';
@@ -9,6 +10,7 @@ import EmptyCart from './components/EmptyCart';
 import './index.css';
 
 export default function PurchasePage() {
+  const history = useHistory();
   const [cartItems, setCartItems] = useState([
     { id: 1, name: 'GPT-Master', category: 'NLP', price: 8900, avatar: 'GM', tags: ['GPT-4', 'Fine-tuning'] },
     { id: 2, name: 'VisionPro', category: 'CV', price: 7500, avatar: 'VP', tags: ['YOLO', 'Segmentation'] },
@@ -40,7 +42,7 @@ export default function PurchasePage() {
 
   const handleCheckout = () => {
     // 구매 확정 페이지로 이동
-    console.log('Proceeding to checkout with items:', cartItems);
+    history.push('/confirmation');
   };
 
   return (
