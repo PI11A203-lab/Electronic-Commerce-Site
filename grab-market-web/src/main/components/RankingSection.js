@@ -56,7 +56,7 @@ const RankingSection = ({ topProducts }) => {
             </div>
 
             <div className="ranking-footer">
-              <span className="ranking-price">{product.price}원</span>
+              <span className="ranking-price">¥{product.price.toLocaleString()}</span>
               <button className="btn-view">View Profile</button>
             </div>
           </Link>

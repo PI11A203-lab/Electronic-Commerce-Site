@@ -33,7 +33,7 @@ export default function CartItem({ item, onRemove }) {
           </div>
           <div className="cart-item-price-section">
             <span className="cart-item-price">
-              ${item.price.toLocaleString()}
+              ¥{item.price.toLocaleString()}
             </span>
           </div>
         </div>

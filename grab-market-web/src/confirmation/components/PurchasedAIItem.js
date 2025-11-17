@@ -20,7 +20,7 @@ export default function PurchasedAIItem({ ai, index, onCopyCode }) {
               <p className="confirmation-ai-category">{ai.category}</p>
             </div>
             <div className="confirmation-ai-price">
-              ${ai.price.toLocaleString()}
+              ¥{ai.price.toLocaleString()}
             </div>
           </div>
           <div className="confirmation-ai-code-box">

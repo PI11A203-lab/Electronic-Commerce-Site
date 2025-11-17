@@ -16,22 +16,22 @@ export default function OrderSummary({
       <div className="order-summary-details">
         <div className="order-summary-row">
           <span>Subtotal ({cartItems.length} items)</span>
-          <span className="order-summary-value">${subtotal.toLocaleString()}</span>
+          <span className="order-summary-value">¥{subtotal.toLocaleString()}</span>
         </div>
         {appliedCoupon && (
           <div className="order-summary-row discount">
             <span>Discount ({appliedCoupon.label})</span>
-            <span className="order-summary-value">-${discount.toLocaleString()}</span>
+            <span className="order-summary-value">-¥{discount.toLocaleString()}</span>
           </div>
         )}
         <div className="order-summary-row">
           <span>Tax (10%)</span>
-          <span className="order-summary-value">${tax.toLocaleString()}</span>
+          <span className="order-summary-value">¥{tax.toLocaleString()}</span>
         </div>
         <div className="order-summary-total">
           <span className="order-summary-total-label">Total</span>
           <span className="order-summary-total-value">
-            ${Math.round(total).toLocaleString()}
+            ¥{Math.round(total).toLocaleString()}
           </span>
         </div>
       </div>

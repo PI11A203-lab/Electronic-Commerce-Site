@@ -35,7 +35,7 @@ export default function DeveloperCard({ developer, isSelected, isFull, onAdd, on
       </div>
       
       <div className="developer-card-footer">
-        <span className="developer-price">${developer.price.toLocaleString()}</span>
+        <span className="developer-price">¥{developer.price.toLocaleString()}</span>
         {isSelected ? (
           <button
             onClick={() => onRemove(developer.id)}

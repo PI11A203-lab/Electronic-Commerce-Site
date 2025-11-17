@@ -14,7 +14,7 @@ export default function FavoritesTab({ favorites }) {
             <span>{fav.rating}</span>
           </div>
           <div className="favorite-footer">
-            <span className="favorite-price">{fav.price}원</span>
+            <span className="favorite-price">¥{fav.price.toLocaleString()}</span>
             <button className="btn-remove-favorite">
               <Heart className="w-5 h-5 filled" />
             </button>

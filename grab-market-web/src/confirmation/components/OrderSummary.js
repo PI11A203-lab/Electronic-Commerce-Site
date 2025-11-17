@@ -20,7 +20,7 @@ export default function OrderSummary({ orderDetails, purchasedAIs }) {
         <div className="confirmation-order-summary-total">
           <span className="confirmation-order-summary-total-label">Total Paid</span>
           <span className="confirmation-order-summary-total-value">
-            ${orderDetails.total.toLocaleString()}
+            ¥{orderDetails.total.toLocaleString()}
           </span>
         </div>
       </div>

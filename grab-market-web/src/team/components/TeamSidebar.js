@@ -38,7 +38,7 @@ export default function TeamSidebar({
                   </div>
                   <div className="team-member-info">
                     <h4 className="team-member-name">{dev.name}</h4>
-                    <p className="team-member-price">${dev.price.toLocaleString()}</p>
+                    <p className="team-member-price">¥{dev.price.toLocaleString()}</p>
                   </div>
                   <button
                     onClick={() => onRemoveFromTeam(dev.id)}
@@ -60,10 +60,10 @@ export default function TeamSidebar({
             <div className="team-price-section">
               <div className="price-row">
                 <span className="price-label">Team Total</span>
-                <span className="price-value">${totalPrice.toLocaleString()}</span>
+                <span className="price-value">¥{totalPrice.toLocaleString()}</span>
               </div>
               <div className="price-average">
-                Average: ${selectedTeam.length > 0 ? Math.round(totalPrice / selectedTeam.length).toLocaleString() : 0} per developer
+                Average: ¥{selectedTeam.length > 0 ? Math.round(totalPrice / selectedTeam.length).toLocaleString() : 0} per developer
               </div>
             </div>
 

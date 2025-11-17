@@ -7,7 +7,7 @@ export default function PriceSidebar({ developer }) {
       <div className="mb-6">
         <div className="text-sm text-gray-600 mb-2">Starting from</div>
         <div className="text-5xl font-bold text-gray-900 mb-1">
-          ${developer.price.toLocaleString()}
+          ¥{developer.price.toLocaleString()}
         </div>
         <div className="text-sm text-gray-600">per project</div>
       </div>

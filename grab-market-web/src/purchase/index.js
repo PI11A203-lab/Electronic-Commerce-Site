@@ -1,21 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
+import axios from 'axios';
 import PurchaseHeader from './components/PurchaseHeader';
 import CartItem from './components/CartItem';
 import CouponSection from './components/CouponSection';
 import OrderSummary from './components/OrderSummary';
 import PurchaseProtection from './components/PurchaseProtection';
 import EmptyCart from './components/EmptyCart';
+import { API_URL } from '../config/constants';
 import './index.css';
 
 export default function PurchasePage() {
   const history = useHistory();
-  const [cartItems, setCartItems] = useState([
-    { id: 1, name: 'GPT-Master', category: 'NLP', price: 8900, avatar: 'GM', tags: ['GPT-4', 'Fine-tuning'] },
-    { id: 2, name: 'VisionPro', category: 'CV', price: 7500, avatar: 'VP', tags: ['YOLO', 'Segmentation'] },
-    { id: 3, name: 'AudioWizard', category: 'Audio', price: 6800, avatar: 'AW', tags: ['Speech Recognition', 'TTS'] },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // localStorage에서 장바구니 아이템 가져오기
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      try {
+        const cartItemIds = JSON.parse(savedCart);
+        // 장바구니에 있는 상품 ID로 상품 정보 가져오기
+        Promise.all(
+          cartItemIds.map(id => 
+            axios.get(`${API_URL}/products/${id}`)
+              .then(res => {
+                const product = res.data.product;
+                return {
+                  id: product.id,
+                  name: product.name,
+                  category: 'NLP', // 기본값, 필요시 API에서 가져오기
+                  price: product.price,
+                  avatar: product.name.substring(0, 2),
+                  tags: ['AI/ML', 'Expert'] // 기본값
+                };
+              })
+          )
+        ).then(items => {
+          setCartItems(items);
+          setLoading(false);
+        }).catch(error => {
+          console.error('エラー発生 : ', error);
+          setLoading(false);
+        });
+      } catch (e) {
+        console.error('Failed to parse cart data:', e);
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
+    }
+  }, []);
 
   const [couponCode, setCouponCode] = useState('');
   const [appliedCoupon, setAppliedCoupon] = useState(null);
@@ -60,7 +97,11 @@ export default function PurchasePage() {
           </p>
         </div>
 
-        {cartItems.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="text-xl text-gray-600">Loading...</div>
+          </div>
+        ) : cartItems.length === 0 ? (
           <EmptyCart />
         ) : (
           <div className="purchase-content">

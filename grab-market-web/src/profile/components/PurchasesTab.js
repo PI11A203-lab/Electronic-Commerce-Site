@@ -17,7 +17,7 @@ export default function PurchasesTab({ purchases }) {
             <code className="code-text">{purchase.code}</code>
           </div>
           <div className="purchase-footer">
-            <span className="purchase-price">{purchase.price}원</span>
+            <span className="purchase-price">¥{purchase.price.toLocaleString()}</span>
             <span className="purchase-date">{purchase.purchaseDate}</span>
           </div>
         </div>

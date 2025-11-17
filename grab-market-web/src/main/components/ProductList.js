@@ -51,7 +51,7 @@ const ProductList = ({ products }) => {
             </div>
 
             <div className="product-footer-new">
-              <span className="product-price-new">{product.price}원</span>
+              <span className="product-price-new">¥{product.price.toLocaleString()}</span>
               <button className="btn-view-small">View</button>
             </div>
           </Link>

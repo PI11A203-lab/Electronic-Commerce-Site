@@ -1,12 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import TeamHeader from './components/TeamHeader';
 import AvailableDevelopers from './components/AvailableDevelopers';
 import TeamSidebar from './components/TeamSidebar';
-import { availableDevelopers, maxTeamSize } from './mockData';
+import { API_URL } from '../config/constants';
 import './index.css';
 
 export default function TeamBuilder() {
   const [selectedTeam, setSelectedTeam] = useState([]);
+  const [availableDevelopers, setAvailableDevelopers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const maxTeamSize = 5;
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/products`)
+      .then((result) => {
+        const products = result.data.products;
+        // API 응답을 developer 형식으로 변환
+        const developers = products.map(product => ({
+          id: product.id,
+          name: product.name,
+          category: 'NLP', // 기본값
+          price: product.price,
+          stats: {
+            technical: 95,
+            communication: 90,
+            creativity: 88,
+            speed: 92,
+            reliability: 93,
+            innovation: 90
+          }
+        }));
+        setAvailableDevelopers(developers);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('エラー発生 : ', error);
+        setLoading(false);
+      });
+  }, []);
 
   // 팀에 추가
   const addToTeam = (developer) => {
@@ -78,6 +111,19 @@ export default function TeamBuilder() {
   const teamStats = calculateTeamStats();
   const synergyScore = calculateSynergyScore();
   const totalPrice = calculateTotalPrice();
+
+  if (loading) {
+    return (
+      <div className="team-builder">
+        <TeamHeader />
+        <main className="team-main">
+          <div className="text-center py-12">
+            <div className="text-xl text-gray-600">Loading...</div>
+          </div>
+        </main>
+      </div>
+    );
+  }
 
   return (
     <div className="team-builder">
