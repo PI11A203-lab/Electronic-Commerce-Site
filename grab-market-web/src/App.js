@@ -3,6 +3,7 @@ import MainPageComponent from "./main";
 import { Switch, Route, Link, useHistory } from "react-router-dom";
 import ProductPage from "./product";
 import UploadPage from "./upload";
+import LoginPage from "./login";
 import { Button } from "antd";
 import { DownloadOutlined } from "@ant-design/icons";
 
@@ -36,6 +37,9 @@ function App() {
           </Route>
           <Route exact={true} path="/upload">
             <UploadPage />
+          </Route>
+          <Route exact={true} path="/login">
+            <LoginPage />
           </Route>
         </Switch>
       </div>
