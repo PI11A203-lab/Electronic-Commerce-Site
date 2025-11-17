@@ -4,12 +4,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 2rem 3rem;
 }
 
 .login-page-content {
   width: 100%;
-  max-width: 28rem;
+  max-width: 32rem;
 }
 
 .login-form-container {
@@ -17,7 +17,32 @@
   border-radius: 24px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   border: 1px solid #f3f4f6;
-  padding: 32px;
+  padding: 40px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .login-page-container {
+    padding: 1.5rem;
+  }
+  
+  .login-page-content {
+    max-width: 100%;
+  }
+  
+  .login-form-container {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-page-container {
+    padding: 1rem;
+  }
+  
+  .login-form-container {
+    padding: 24px 20px;
+  }
 }
 
 .login-form-container .space-y-6 > * + * {

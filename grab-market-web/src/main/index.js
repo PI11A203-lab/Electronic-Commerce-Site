@@ -63,8 +63,7 @@ function MainPage() {
             </nav>
           </div>
           <div className="header-right">
-            <button className="btn-signin">Sign in</button>
-            <button className="btn-signup">Sign up</button>
+            <Link to="/login" className="btn-signup">Sign in</Link>
           </div>
         </div>
       </header>

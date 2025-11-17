@@ -1,0 +1,573 @@
+/* 프로필 컨테이너 */
+.profile-container {
+    min-height: 100vh;
+    background-color: #f9fafb;
+  }
+  
+  .profile-header {
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1.25rem 4rem;
+  }
+  
+  .btn-back {
+    padding: 0.625rem 1.25rem;
+    background: none;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .btn-back:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
+  }
+  
+  /* 프로필 메인 */
+  .profile-main {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 3rem 4rem;
+  }
+  
+  /* 프로필 히어로 */
+  .profile-hero {
+    background: linear-gradient(to right, #eff6ff, #f3e8ff);
+    border: 1px solid #e5e7eb;
+    border-radius: 1.5rem;
+    padding: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  .profile-hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+  }
+  
+  .profile-avatar-section {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .profile-avatar-large {
+    width: 8rem;
+    height: 8rem;
+    background: linear-gradient(to bottom right, #3b82f6, #9333ea);
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+    flex-shrink: 0;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-info {
+    flex: 1;
+  }
+  
+  .profile-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #111827;
+  }
+  
+  .profile-email {
+    color: #6b7280;
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+  
+  .profile-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .profile-tag {
+    padding: 0.5rem 1rem;
+    background: linear-gradient(to right, white, #f9fafb);
+    color: #4f46e5;
+    border: 1px solid #e0e7ff;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
+  .profile-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .profile-github,
+  .profile-join {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color 0.2s;
+  }
+  
+  .profile-github:hover {
+    color: #111827;
+  }
+  
+  /* 통계 카드 */
+  .profile-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .stat-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stat-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    color: #3b82f6;
+    margin: 0 auto 0.75rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 0.25rem;
+  }
+  
+  .stat-label {
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+  
+  /* 탭 네비게이션 */
+  .profile-tabs {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+    margin-bottom: 2rem;
+  }
+  
+  .tab-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 600;
+    color: #6b7280;
+    transition: all 0.2s;
+    font-size: 1rem;
+  }
+  
+  .tab-button:hover {
+    color: #111827;
+  }
+  
+  .tab-button.active {
+    color: #3b82f6;
+    border-bottom-color: #3b82f6;
+  }
+  
+  .tab-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  
+  /* 탭 컨텐츠 */
+  .tab-content {
+    min-height: 400px;
+  }
+  
+  /* 구매 목록 */
+  .purchases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .purchase-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+  
+  .purchase-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #93c5fd;
+  }
+  
+  .purchase-header {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .purchase-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: linear-gradient(to bottom right, #3b82f6, #9333ea);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+  
+  .purchase-info {
+    flex: 1;
+  }
+  
+  .purchase-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+  
+  .purchase-category {
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+  
+  .purchase-code {
+    background: #f9fafb;
+    border: 2px dashed #d1d5db;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .code-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+  }
+  
+  .code-text {
+    display: block;
+    font-family: monospace;
+    font-size: 0.875rem;
+    color: #2563eb;
+    font-weight: bold;
+  }
+  
+  .purchase-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #f3f4f6;
+  }
+  
+  .purchase-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #111827;
+  }
+  
+  .purchase-date {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  /* 리뷰 목록 */
+  .reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .review-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+  
+  .review-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .review-ai-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .review-rating {
+    display: flex;
+    gap: 0.25rem;
+  }
+  
+  .review-star {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #d1d5db;
+  }
+  
+  .review-star.filled {
+    color: #fbbf24;
+    fill: #fbbf24;
+  }
+  
+  .review-comment {
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+  
+  .review-date {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  /* 팀 목록 */
+  .teams-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .team-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+  
+  .team-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #93c5fd;
+  }
+  
+  .team-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .team-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #3b82f6;
+  }
+  
+  .team-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .team-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .team-member-badge {
+    padding: 0.5rem 1rem;
+    background: #eff6ff;
+    color: #1e40af;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
+  .team-synergy {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: linear-gradient(to right, #fef3c7, #fde68a);
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .synergy-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #d97706;
+  }
+  
+  .synergy-label {
+    font-size: 0.875rem;
+    color: #92400e;
+    font-weight: 600;
+  }
+  
+  .synergy-score {
+    margin-left: auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #d97706;
+  }
+  
+  .team-date {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  /* 찜 목록 */
+  .favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .favorite-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  
+  .favorite-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: #fca5a5;
+  }
+  
+  .favorite-avatar {
+    width: 5rem;
+    height: 5rem;
+    background: linear-gradient(to bottom right, #374151, #111827);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
+  }
+  
+  .favorite-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+  }
+  
+  .favorite-category {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .favorite-rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .favorite-star {
+    width: 1rem;
+    height: 1rem;
+    fill: #fbbf24;
+    color: #fbbf24;
+  }
+  
+  .favorite-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #f3f4f6;
+  }
+  
+  .favorite-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .btn-remove-favorite {
+    padding: 0.5rem;
+    background: #fef2f2;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #ef4444;
+  }
+  
+  .btn-remove-favorite:hover {
+    background: #fee2e2;
+  }
+  
+  .btn-remove-favorite .filled {
+    fill: #ef4444;
+  }
+  
+  /* 반응형 */
+  @media (max-width: 1024px) {
+    .profile-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .purchases-grid,
+    .teams-grid,
+    .favorites-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .profile-hero-content {
+      flex-direction: column;
+    }
+    
+    .profile-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .profile-tabs {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
+  }

@@ -15,9 +15,9 @@
 }
 
 .header-content {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 1rem 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -85,6 +85,8 @@
   border: none;
   cursor: pointer;
   transition: color 0.2s;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn-signin:hover {
@@ -100,6 +102,8 @@
   border: none;
   cursor: pointer;
   transition: box-shadow 0.2s;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn-signup:hover {
@@ -113,9 +117,9 @@
 }
 
 .search-content {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 3rem 3rem;
 }
 
 .search-title {
@@ -169,9 +173,9 @@
 
 /* 메인 컨텐츠 */
 .main-content {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 3rem;
 }
 
 .content-wrapper {
@@ -308,7 +312,7 @@
 
 .ranking-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
 }
 
@@ -472,7 +476,7 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
@@ -663,7 +667,23 @@
 }
 
 /* 반응형 */
+@media (max-width: 1536px) {
+  .header-content,
+  .search-content,
+  .main-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
 @media (max-width: 1024px) {
+  .header-content,
+  .search-content,
+  .main-content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
   .main-nav {
     display: none;
   }
@@ -674,6 +694,13 @@
 }
 
 @media (max-width: 768px) {
+  .header-content,
+  .search-content,
+  .main-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
   .sidebar {
     display: none;
   }
