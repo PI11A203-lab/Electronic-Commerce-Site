@@ -78,6 +78,12 @@
   gap: 1rem;
 }
 
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
 .btn-signin {
   padding: 0.5rem 1.25rem;
   color: #374151;
@@ -109,6 +115,30 @@
 
 .btn-signup:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-logout {
+  padding: 0.5rem;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+}
+
+.btn-logout:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  color: #374151;
+}
+
+.logout-icon {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 /* 검색 섹션 */

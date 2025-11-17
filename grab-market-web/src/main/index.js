@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-import { Search, Filter, Star, TrendingUp, Award } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { API_URL } from '../config/constants';
+import LogoutButton from './components/LogoutButton';
+import CategorySidebar from './components/CategorySidebar';
+import RankingSection from './components/RankingSection';
+import ProductList from './components/ProductList';
 import './index.css';
-
-dayjs.extend(relativeTime);
 
 function MainPage() {
   const [products, setProducts] = useState([]);
@@ -26,6 +26,8 @@ function MainPage() {
         } catch (e) {
           console.error('Failed to parse user data:', e);
         }
+      } else {
+        setUser(null);
       }
     };
 
@@ -34,6 +36,21 @@ function MainPage() {
     window.addEventListener('storage', checkLoginStatus);
     return () => window.removeEventListener('storage', checkLoginStatus);
   }, []);
+
+  // 로그아웃 함수
+  const handleLogout = () => {
+    // localStorage와 sessionStorage 모두에서 사용자 정보 제거
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
+    
+    // 상태 업데이트
+    setUser(null);
+    
+    // 메인 페이지로 리다이렉트 (현재 페이지이므로 새로고침)
+    window.location.reload();
+  };
 
   const categories = [
     { id: 'all', name: 'All', icon: '🤖', count: 0 },
@@ -84,9 +101,12 @@ function MainPage() {
           </div>
           <div className="header-right">
             {user ? (
-              <Link to="/profile" className="btn-signup">
-                {user.nickname}
-              </Link>
+              <div className="user-menu">
+                <Link to="/profile" className="btn-signup">
+                  {user.nickname}
+                </Link>
+                <LogoutButton onLogout={handleLogout} />
+              </div>
             ) : (
               <Link to="/login" className="btn-signup">Sign in</Link>
             )}
@@ -120,159 +140,21 @@ function MainPage() {
       <div className="main-content">
         <div className="content-wrapper">
           {/* 사이드바 */}
-          <aside className="sidebar">
-            <div className="sidebar-content">
-              <h3 className="sidebar-title">
-                <Filter className="sidebar-icon" />
-                Categories
-              </h3>
-              <div className="category-list">
-                {categories.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => setSelectedCategory(cat.id)}
-                    className={`category-btn ${selectedCategory === cat.id ? 'active' : ''}`}
-                  >
-                    <div className="category-info">
-                      <span className="category-icon">{cat.icon}</span>
-                      <span className="category-name">{cat.name}</span>
-                    </div>
-                    <span className="category-count">{cat.count}</span>
-                  </button>
-                ))}
-              </div>
-
-              <div className="sort-section">
-                <h4 className="sort-title">Sort by</h4>
-                <select 
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="sort-select"
-                >
-                  <option value="trending">🔥 Trending</option>
-                  <option value="downloads">📥 Most Downloads</option>
-                  <option value="rating">⭐ Highest Rated</option>
-                  <option value="newest">🆕 Newest</option>
-                  <option value="price-low">💰 Price: Low to High</option>
-                  <option value="price-high">💎 Price: High to Low</option>
-                </select>
-              </div>
-            </div>
-          </aside>
+          <CategorySidebar
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+            sortBy={sortBy}
+            onSortChange={setSortBy}
+          />
 
           {/* 메인 콘텐츠 */}
           <main className="main-products">
             {/* Top 3 랭킹 */}
-            {topProducts.length > 0 && (
-              <div className="ranking-section">
-                <div className="ranking-header">
-                  <Award className="ranking-icon" />
-                  <h3 className="ranking-title">🏆 Top Ranked Developers</h3>
-                </div>
-                
-                <div className="ranking-grid">
-                  {topProducts.map((product) => (
-                    <Link 
-                      key={product.id} 
-                      to={`/products/${product.id}`}
-                      className="ranking-card"
-                    >
-                      <div className="rank-badge">
-                        #{product.rank}
-                      </div>
-
-                      <div className="ranking-avatar">
-                        {product.name.substring(0, 2)}
-                      </div>
-
-                      <h4 className="ranking-name">{product.name}</h4>
-                      
-                      <div className="ranking-rating">
-                        <div className="rating-stars">
-                          <Star className="star-icon" />
-                          <span className="rating-value">4.9</span>
-                        </div>
-                        <span className="rating-count">(1,234 reviews)</span>
-                      </div>
-
-                      <div className="ranking-tags">
-                        <span className="product-tag">AI/ML</span>
-                        <span className="product-tag">Expert</span>
-                      </div>
-
-                      <div className="ranking-stats">
-                        <div className="stat-item">
-                          <TrendingUp className="stat-icon" />
-                          <span>12.5k</span>
-                        </div>
-                        <div className="stat-item">
-                          <span>Skill 95%</span>
-                        </div>
-                      </div>
-
-                      <div className="ranking-footer">
-                        <span className="ranking-price">{product.price}원</span>
-                        <button className="btn-view">View Profile</button>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
+            <RankingSection topProducts={topProducts} />
 
             {/* 나머지 제품 목록 */}
-            <div className="products-section">
-              <h3 className="products-title">All AI Developers</h3>
-              <div className="products-grid">
-                {regularProducts.map((product) => (
-                  <Link 
-                    key={product.id} 
-                    to={`/products/${product.id}`}
-                    className={`product-card ${product.soldout === 1 ? 'soldout' : ''}`}
-                  >
-                    {product.soldout === 1 && <div className="product-blur" />}
-                    
-                    <div className="product-header">
-                      <div className="product-avatar-small">
-                        {product.name.substring(0, 2)}
-                      </div>
-                      <button className="btn-favorite">
-                        <Star className="favorite-icon" />
-                      </button>
-                    </div>
-
-                    <div className="product-image-wrapper">
-                      <img
-                        className="product-image"
-                        src={`${API_URL}/${product.imageUrl}`}
-                        alt={product.name}
-                      />
-                    </div>
-
-                    <h4 className="product-name">{product.name}</h4>
-                    
-                    <div className="product-rating-small">
-                      <Star className="star-small" />
-                      <span className="rating-small">4.7</span>
-                      <span className="reviews-small">(234)</span>
-                    </div>
-
-                    <div className="product-meta">
-                      <div className="meta-item">
-                        <TrendingUp className="meta-icon" />
-                        <span>8.2k</span>
-                      </div>
-                      <span className="meta-skill">Skill 88%</span>
-                    </div>
-
-                    <div className="product-footer-new">
-                      <span className="product-price-new">{product.price}원</span>
-                      <button className="btn-view-small">View</button>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
+            <ProductList products={regularProducts} />
 
             {/* 더보기 버튼 */}
             <div className="load-more">
