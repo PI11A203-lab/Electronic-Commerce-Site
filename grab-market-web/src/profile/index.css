@@ -2,6 +2,7 @@
 .profile-container {
     min-height: 100vh;
     background-color: #f9fafb;
+    padding-bottom: 4rem;
   }
   
   .profile-header {
@@ -18,6 +19,9 @@
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
   }
   
   .btn-back:hover {
@@ -545,7 +549,46 @@
   }
   
   /* 반응형 */
+  @media (min-width: 1920px) {
+    .profile-main {
+      max-width: 1800px;
+      padding: 4rem 6rem;
+    }
+    
+    .profile-header {
+      padding: 1.5rem 6rem;
+    }
+    
+    .profile-hero {
+      padding: 4rem;
+    }
+    
+    .purchases-grid,
+    .teams-grid,
+    .favorites-grid {
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    }
+  }
+
+  @media (max-width: 1536px) {
+    .profile-main {
+      padding: 3rem 3rem;
+    }
+    
+    .profile-header {
+      padding: 1.25rem 3rem;
+    }
+  }
+
   @media (max-width: 1024px) {
+    .profile-main {
+      padding: 2rem 2rem;
+    }
+    
+    .profile-header {
+      padding: 1rem 2rem;
+    }
+    
     .profile-stats {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -553,11 +596,23 @@
     .purchases-grid,
     .teams-grid,
     .favorites-grid {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     }
   }
-  
+
   @media (max-width: 768px) {
+    .profile-main {
+      padding: 1.5rem 1rem;
+    }
+    
+    .profile-header {
+      padding: 1rem;
+    }
+    
+    .profile-hero {
+      padding: 2rem 1.5rem;
+    }
+    
     .profile-hero-content {
       flex-direction: column;
     }
@@ -569,5 +624,38 @@
     .profile-tabs {
       overflow-x: auto;
       flex-wrap: nowrap;
+    }
+    
+    .purchases-grid,
+    .teams-grid,
+    .favorites-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .profile-container {
+      padding-bottom: 2rem;
+    }
+    
+    .profile-main {
+      padding: 1rem 0.75rem;
+    }
+    
+    .profile-header {
+      padding: 0.75rem;
+    }
+    
+    .profile-hero {
+      padding: 1.5rem 1rem;
+    }
+    
+    .profile-avatar-section {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .profile-stats {
+      grid-template-columns: 1fr;
     }
   }

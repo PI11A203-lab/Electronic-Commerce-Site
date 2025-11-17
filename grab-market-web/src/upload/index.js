@@ -62,10 +62,10 @@ function UploadPage() {
             onChange={onChangeImage}
           >
             {imageUrl ? (
-              <img id="upload-img" src={`${API_URL}/${imageUrl}`} />
+              <img id="upload-img" src={`${API_URL}/${imageUrl}`} alt="Uploaded image" />
             ) : (
               <div id="upload-img-placeholder">
-                <img src="/images/icons/camera.png" />
+                <img src="/images/icons/camera.png" alt="Camera icon" />
                 <span>イメージをアップロードしてください。</span>
               </div>
             )}

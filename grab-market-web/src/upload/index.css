@@ -1,5 +1,56 @@
 #upload-container {
   padding-top: 36px;
+  padding-bottom: 4rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  min-height: calc(100vh - 36px);
+}
+
+/* 반응형 */
+@media (min-width: 1920px) {
+  #upload-container {
+    max-width: 1600px;
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  #upload-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #upload-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  #upload-img-placeholder,
+  #upload-img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  #upload-container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-bottom: 2rem;
+  }
+  
+  #upload-img-placeholder,
+  #upload-img {
+    width: 120px;
+    height: 120px;
+    margin-left: 0;
+  }
 }
 
 #upload-img-placeholder {

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { ShoppingBag, Star, Users, Heart, Github, Calendar, Award, TrendingUp } from 'lucide-react';
+import './index.css';
 
 export default function UserProfile() {
+  const history = useHistory();
   const [activeTab, setActiveTab] = useState('purchases');
 
   // 유저 정보
@@ -69,7 +72,7 @@ export default function UserProfile() {
             <span className="logo-icon">🤖</span>
             <span className="logo-text">AIDE Market</span>
           </h1>
-          <button className="btn-back">← Back to Home</button>
+          <button className="btn-back" onClick={() => history.push('/')}>← Back to Home</button>
         </div>
       </header>
 

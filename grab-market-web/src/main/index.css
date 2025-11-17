@@ -2,6 +2,7 @@
 .marketplace-container {
   min-height: 100vh;
   background-color: #f9fafb;
+  padding-bottom: 4rem;
 }
 
 /* 헤더 */
@@ -667,12 +668,35 @@
 }
 
 /* 반응형 */
+@media (min-width: 1920px) {
+  .header-content,
+  .search-content,
+  .main-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+  
+  .search-title {
+    font-size: 3.5rem;
+  }
+  
+  .ranking-grid {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
 @media (max-width: 1536px) {
   .header-content,
   .search-content,
   .main-content {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
 
@@ -680,8 +704,8 @@
   .header-content,
   .search-content,
   .main-content {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
   
   .main-nav {
@@ -691,14 +715,26 @@
   .ranking-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
   .header-content,
   .search-content,
   .main-content {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .search-title {
+    font-size: 2rem;
+  }
+  
+  .search-subtitle {
+    font-size: 1rem;
   }
   
   .sidebar {
@@ -711,5 +747,30 @@
   
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .marketplace-container {
+    padding-bottom: 2rem;
+  }
+  
+  .header-content,
+  .search-content,
+  .main-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .search-title {
+    font-size: 1.75rem;
+  }
+  
+  .search-subtitle {
+    font-size: 0.875rem;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
   }
 }

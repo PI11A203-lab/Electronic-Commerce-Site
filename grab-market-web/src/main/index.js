@@ -14,6 +14,26 @@ function MainPage() {
   const [searchText, setSearchText] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [sortBy, setSortBy] = useState('trending');
+  const [user, setUser] = useState(null);
+
+  // 로그인 상태 확인
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      const userFromStorage = localStorage.getItem('user') || sessionStorage.getItem('user');
+      if (userFromStorage) {
+        try {
+          setUser(JSON.parse(userFromStorage));
+        } catch (e) {
+          console.error('Failed to parse user data:', e);
+        }
+      }
+    };
+
+    checkLoginStatus();
+    // storage 이벤트 리스너 추가 (다른 탭에서 로그인/로그아웃 시 동기화)
+    window.addEventListener('storage', checkLoginStatus);
+    return () => window.removeEventListener('storage', checkLoginStatus);
+  }, []);
 
   const categories = [
     { id: 'all', name: 'All', icon: '🤖', count: 0 },
@@ -63,7 +83,13 @@ function MainPage() {
             </nav>
           </div>
           <div className="header-right">
-            <Link to="/login" className="btn-signup">Sign in</Link>
+            {user ? (
+              <Link to="/profile" className="btn-signup">
+                {user.nickname}
+              </Link>
+            ) : (
+              <Link to="/login" className="btn-signup">Sign in</Link>
+            )}
           </div>
         </div>
       </header>

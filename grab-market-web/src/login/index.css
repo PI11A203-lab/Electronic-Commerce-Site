@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 3rem;
+  padding: 2rem 3rem 4rem 3rem;
 }
 
 .login-page-content {
@@ -21,6 +21,26 @@
 }
 
 /* 반응형 */
+@media (min-width: 1920px) {
+  .login-page-container {
+    padding: 4rem 6rem;
+  }
+  
+  .login-page-content {
+    max-width: 40rem;
+  }
+  
+  .login-form-container {
+    padding: 48px;
+  }
+}
+
+@media (max-width: 1536px) {
+  .login-page-container {
+    padding: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .login-page-container {
     padding: 1.5rem;
@@ -37,7 +57,7 @@
 
 @media (max-width: 480px) {
   .login-page-container {
-    padding: 1rem;
+    padding: 1rem 1rem 2rem 1rem;
   }
   
   .login-form-container {
