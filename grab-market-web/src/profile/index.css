@@ -11,21 +11,27 @@
     padding: 1.25rem 4rem;
   }
   
-  .btn-back {
-    padding: 0.625rem 1.25rem;
-    background: none;
-    border: 2px solid #e5e7eb;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
+  .profile-header .header-content {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
   }
   
-  .btn-back:hover {
-    border-color: #3b82f6;
+  .profile-header .btn-back {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #374151;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .profile-header .btn-back:hover {
     color: #3b82f6;
   }
   

@@ -1,11 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default function ProfileHeader() {
+export default function PurchaseHeader() {
   const history = useHistory();
 
   return (
-    <header className="profile-header">
+    <header className="profile-header">  {/* purchase-header → profile-header */}
       <div className="header-content">
         <h1 className="logo">
           <span className="logo-icon">🤖</span>
@@ -21,4 +21,3 @@ export default function ProfileHeader() {
     </header>
   );
 }
-

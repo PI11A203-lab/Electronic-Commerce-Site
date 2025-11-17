@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Search } from 'lucide-react';
+import { Search, ShoppingCart } from 'lucide-react';
 import { API_URL } from '../config/constants';
 import LogoutButton from './components/LogoutButton';
 import CategorySidebar from './components/CategorySidebar';
@@ -93,13 +93,16 @@ function MainPage() {
               </h1>
             </div>
             <nav className="main-nav">
-              <a href="#" className="nav-link">Models</a>
-              <a href="#" className="nav-link">Teams</a>
-              <a href="#" className="nav-link">Leaderboard</a>
-              <a href="#" className="nav-link">Pricing</a>
+              <button className="nav-link" type="button">Models</button>
+              <Link to="/team" className="nav-link">Teams</Link>
+              <button className="nav-link" type="button">Leaderboard</button>
+              <button className="nav-link" type="button">Pricing</button>
             </nav>
           </div>
           <div className="header-right">
+            <Link to="/purchase" className="cart-link">
+              <ShoppingCart className="cart-icon" />
+            </Link>
             {user ? (
               <div className="user-menu">
                 <Link to="/profile" className="btn-signup">

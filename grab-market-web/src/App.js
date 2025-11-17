@@ -5,6 +5,8 @@ import ProductPage from "./product";
 import UploadPage from "./upload";
 import LoginPage from "./login";
 import UserProfile from "./profile";
+import TeamBuilder from "./team";
+import PurchasePage from "./purchase";
 
 function App() {
   return (
@@ -25,6 +27,12 @@ function App() {
           </Route>
           <Route exact={true} path="/profile">
             <UserProfile />
+          </Route>
+          <Route exact={true} path="/team">
+            <TeamBuilder />
+          </Route>
+          <Route exact={true} path="/purchase">
+            <PurchasePage />
           </Route>
         </Switch>
       </div>
