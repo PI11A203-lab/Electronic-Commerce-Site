@@ -12,7 +12,7 @@ const RankingSection = ({ topProducts }) => {
   return (
     <div className="ranking-section">
       <div className="ranking-header">
-        <h3 className="ranking-title">🏆 今月のトップランク開発者</h3>
+        <h3 className="ranking-title">今月のトップランク開発者</h3>
       </div>
       
       <div className="ranking-grid">

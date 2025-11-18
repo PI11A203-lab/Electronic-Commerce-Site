@@ -53,7 +53,7 @@ function MainPage() {
   };
 
   const categories = [
-    { id: 'all', name: 'All', icon: '🤖', count: 41 },
+    { id: 'all', name: 'すべて', count: 41 },
     { id: 'fe', name: 'フロントエンド', count: 5 },
     { id: 'be', name: 'バックエンド', count: 6 },
     { id: 'design', name: 'イメージ', count: 6 },
@@ -132,7 +132,7 @@ function MainPage() {
               <Search className="search-icon" />
               <input
                 type="text"
-                placeholder="Search by skills, category, or expertise..."
+                placeholder="あなたが探しているAIは何ですか？"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
                 className="search-input"
