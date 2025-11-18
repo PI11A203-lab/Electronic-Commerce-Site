@@ -1,9 +1,9 @@
 // Mock 사용자 데이터
 export const mockUsers = [
   {
-    email: 'ellan122316@gmail.com',
-    password: 'painter@1223',
-    nickname: 'ナナ'
+    email: 'admin@email.com',
+    password: 'admin',
+    nickname: 'キム スミン'
   }
 ];
 
