@@ -33,12 +33,11 @@ const CategorySidebar = ({ categories, selectedCategory, onCategoryChange, sortB
             onChange={(e) => onSortChange(e.target.value)}
             className="sort-select"
           >
-            <option value="trending">🔥 Trending</option>
-            <option value="downloads">📥 Most Downloads</option>
-            <option value="rating">⭐ Highest Rated</option>
-            <option value="newest">🆕 Newest</option>
-            <option value="price-low">💰 Price: Low to High</option>
-            <option value="price-high">💎 Price: High to Low</option>
+            <option value="trending">🔥 トレンド</option>
+            <option value="downloads">📥 最多ダウンロード</option>
+            <option value="rating">⭐ 最高評価</option>
+            <option value="price-low">💰 価格: 低から高</option>
+            <option value="price-high">💎 価格: 高から低</option>
           </select>
         </div>
       </div>

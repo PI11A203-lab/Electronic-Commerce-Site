@@ -20,13 +20,13 @@ export default function ProfileHero({ user }) {
             </div>
             <div className="profile-links">
               <a 
-                href={`https://github.com/${user.github}`}
+                href="https://github.com/PI11A203-lab"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="profile-github"
               >
                 <Github className="w-5 h-5" />
-                @{user.github}
+                @PI11A203-lab
               </a>
               <div className="profile-join">
                 <Calendar className="w-5 h-5" />
@@ -41,4 +41,3 @@ export default function ProfileHero({ user }) {
     </div>
   );
 }
-

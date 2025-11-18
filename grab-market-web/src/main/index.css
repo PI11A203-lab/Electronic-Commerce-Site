@@ -407,18 +407,13 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
+/* 랭킹 아바타 - 이미지로 변경 */
 .ranking-avatar {
   width: 5rem;
   height: 5rem;
-  background: linear-gradient(to bottom right, #3b82f6, #9333ea);
   border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 1.5rem;
   margin-bottom: 1rem;
+  object-fit: cover;
 }
 
 .ranking-name {

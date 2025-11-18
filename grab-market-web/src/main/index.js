@@ -53,11 +53,13 @@ function MainPage() {
   };
 
   const categories = [
-    { id: 'all', name: 'All', icon: '🤖', count: 0 },
-    { id: 'nlp', name: 'NLP', icon: '💬', count: 0 },
-    { id: 'cv', name: 'Computer Vision', icon: '👁️', count: 0 },
-    { id: 'audio', name: 'Audio', icon: '🎵', count: 0 },
-    { id: 'multimodal', name: 'Multimodal', icon: '🌈', count: 0 },
+    { id: 'all', name: 'All', icon: '🤖', count: 41 },
+    { id: 'fe', name: 'フロントエンド', count: 5 },
+    { id: 'be', name: 'バックエンド', count: 6 },
+    { id: 'design', name: 'イメージ', count: 6 },
+    { id: 'mg', name: '設計・マネジメント', count: 6 },
+    { id: 'inf', name: 'インフラ', count: 6 },
+    { id: 'sec', name: 'セキュリティ', count: 6 },
   ];
 
   useEffect(() => {
@@ -122,7 +124,7 @@ function MainPage() {
         <div className="search-content">
           <h2 className="search-title">Find the Perfect AI Developer</h2>
           <p className="search-subtitle">
-            Browse {products.length} AI specialists ready to bring your vision to life
+          AI開発者 {products.length} 人があなたのビジョンを実現する準備ができています
           </p>
           
           <div className="search-bar-wrapper">

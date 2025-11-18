@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star, Heart, Share2 } from 'lucide-react';
+import { API_URL } from '../../config/constants';
 
 export default function ProfileHeader({ developer, isLiked, onLikeToggle }) {
   return (
@@ -7,8 +8,13 @@ export default function ProfileHeader({ developer, isLiked, onLikeToggle }) {
       <div className="flex items-start gap-6 mb-6">
         {/* 아바타 & 랭킹 */}
         <div className="relative">
-          <div className="w-28 h-28 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-white font-bold text-4xl">
-            {developer.avatar}
+          {/* 실제 이미지 사용 */}
+          <div className="w-28 h-28 rounded-2xl overflow-hidden">
+            <img 
+              src={`${API_URL}/${developer.imageUrl}`} 
+              alt={developer.name}
+              className="w-full h-full object-cover"
+            />
           </div>
           <div className="absolute -top-2 -right-2 w-10 h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold shadow-lg">
             #{developer.rank}
@@ -76,4 +82,3 @@ export default function ProfileHeader({ developer, isLiked, onLikeToggle }) {
     </div>
   );
 }
-

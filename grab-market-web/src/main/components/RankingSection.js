@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, TrendingUp, Award } from 'lucide-react';
+import { Star, TrendingUp } from 'lucide-react';
+import { API_URL } from '../../config/constants';
 import '../index.css';
 
 const RankingSection = ({ topProducts }) => {
@@ -11,8 +12,7 @@ const RankingSection = ({ topProducts }) => {
   return (
     <div className="ranking-section">
       <div className="ranking-header">
-        <Award className="ranking-icon" />
-        <h3 className="ranking-title">🏆 Top Ranked Developers</h3>
+        <h3 className="ranking-title">🏆 今月のトップランク開発者</h3>
       </div>
       
       <div className="ranking-grid">
@@ -26,8 +26,13 @@ const RankingSection = ({ topProducts }) => {
               #{product.rank}
             </div>
 
+            {/* 실제 이미지 사용 */}
             <div className="ranking-avatar">
-              {product.name.substring(0, 2)}
+              <img 
+                src={`${API_URL}/${product.imageUrl}`} 
+                alt={product.name}
+                className="ranking-avatar-img"
+              />
             </div>
 
             <h4 className="ranking-name">{product.name}</h4>
@@ -67,4 +72,3 @@ const RankingSection = ({ topProducts }) => {
 };
 
 export default RankingSection;
-

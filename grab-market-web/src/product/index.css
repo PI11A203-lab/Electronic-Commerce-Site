@@ -6,6 +6,12 @@
   padding-bottom: 4rem;
 }
 
+/* 이미지 원본 사이즈로 표시 */
+.w-28.h-28 img,
+.w-28 img {
+  object-fit: contain; /* cover에서 contain으로 변경 */
+}
+
 /* 반응형 - 1920px 이상 대형 화면 지원 */
 @media (min-width: 1920px) {
   .max-w-\[1400px\] {

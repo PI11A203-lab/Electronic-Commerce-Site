@@ -14,7 +14,7 @@ export default function AvailableDevelopers({
       <div className="section-card">
         <h3 className="section-title">
           <Users className="section-icon" />
-          Available AI Developers
+          利用可能なAI開発者
         </h3>
         <div className="developers-grid">
           {developers.map((dev) => {

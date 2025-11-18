@@ -13,7 +13,7 @@ export default function SynergyScore({ score }) {
     <div className="synergy-score">
       <div className="synergy-header">
         <Zap className="synergy-icon" />
-        <span className="synergy-label">Team Synergy</span>
+        <span className="synergy-label">チームの相性</span>
       </div>
       <div className="synergy-value">{score}</div>
       <div className="synergy-message">{getScoreMessage()}</div>

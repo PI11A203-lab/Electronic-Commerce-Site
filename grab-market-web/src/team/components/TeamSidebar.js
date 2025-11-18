@@ -1,5 +1,6 @@
 import React from 'react';
 import { Users, X, Award } from 'lucide-react';
+import { API_URL } from '../../config/constants';
 import TeamStatsChart from './TeamStatsChart';
 import SynergyScore from './SynergyScore';
 
@@ -15,7 +16,7 @@ export default function TeamSidebar({
     <div className="team-sidebar">
       <div className="sidebar-card">
         <h3 className="sidebar-title">
-          <span>Your Team</span>
+          <span>AIチーム</span>
           <span className="team-count">
             {selectedTeam.length}/{maxTeamSize}
           </span>
@@ -24,8 +25,8 @@ export default function TeamSidebar({
         {selectedTeam.length === 0 ? (
           <div className="empty-team">
             <Users className="empty-icon" />
-            <p>No developers selected</p>
-            <p className="empty-subtitle">Start building your team!</p>
+            <p>開発者が選択されていません</p>
+            <p className="empty-subtitle">開発者を選択してください</p>
           </div>
         ) : (
           <>
@@ -34,7 +35,14 @@ export default function TeamSidebar({
               {selectedTeam.map((dev) => (
                 <div key={dev.id} className="team-member-item">
                   <div className="team-member-avatar">
-                    {dev.name.substring(0, 2)}
+                    {dev.imageUrl ? (
+                      <img 
+                        src={`${API_URL}/${dev.imageUrl}`} 
+                        alt={dev.name}
+                      />
+                    ) : (
+                      dev.name.substring(0, 2)
+                    )}
                   </div>
                   <div className="team-member-info">
                     <h4 className="team-member-name">{dev.name}</h4>
@@ -59,11 +67,8 @@ export default function TeamSidebar({
             {/* 총 가격 */}
             <div className="team-price-section">
               <div className="price-row">
-                <span className="price-label">Team Total</span>
+                <span className="price-label">チーム合計</span>
                 <span className="price-value">¥{totalPrice.toLocaleString()}</span>
-              </div>
-              <div className="price-average">
-                Average: ¥{selectedTeam.length > 0 ? Math.round(totalPrice / selectedTeam.length).toLocaleString() : 0} per developer
               </div>
             </div>
 
@@ -81,9 +86,9 @@ export default function TeamSidebar({
           <div className="tip-content">
             <Award className="tip-icon" />
             <div className="tip-text">
-              <p className="tip-title">💡 Pro Tip</p>
+              <p className="tip-title">💡 プロダクトドキュメント</p>
               <p className="tip-description">
-                Diversify your team with different specialties to maximize synergy and get the best results!
+              異なる専門分野を持つチームを作り、最大限活用して最高の結果を得てください！
               </p>
             </div>
           </div>
@@ -92,4 +97,3 @@ export default function TeamSidebar({
     </div>
   );
 }
-

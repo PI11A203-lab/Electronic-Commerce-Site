@@ -23,6 +23,7 @@ export default function TeamBuilder() {
           name: product.name,
           category: 'NLP', // 기본값
           price: product.price,
+          imageUrl: product.imageUrl, // ← 추가!
           stats: {
             technical: 95,
             communication: 90,
@@ -131,9 +132,9 @@ export default function TeamBuilder() {
       
       <main className="team-main">
         <div className="team-intro">
-          <h2 className="team-title">Build Your AI Dream Team</h2>
+          <h2 className="team-title">あなたの理想のAIチームを構成してみましょう</h2>
           <p className="team-subtitle">
-            Select up to {maxTeamSize} AI developers to create the perfect team for your project
+            最大 {maxTeamSize} 人まで選択して、理想的なAIチームを作成しましょう
           </p>
         </div>
 
@@ -159,4 +160,3 @@ export default function TeamBuilder() {
     </div>
   );
 }
-

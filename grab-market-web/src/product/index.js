@@ -21,6 +21,8 @@ export default function ProductPage() {
       .get(`${API_URL}/products/${id}`)
       .then((result) => {
         const product = result.data.product;
+        console.log('Product data:', product); // 디버깅용
+        
         // API 응답을 developer 형식으로 변환
         setDeveloper({
           id: product.id,
@@ -30,6 +32,7 @@ export default function ProductPage() {
           rank: 1,
           skill: 95,
           price: product.price,
+          imageUrl: product.imageUrl, // ← 추가!
           downloads: '156k',
           likes: 3421,
           rating: 4.9,
