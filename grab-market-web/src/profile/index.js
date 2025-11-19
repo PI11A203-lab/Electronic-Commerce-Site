@@ -68,9 +68,7 @@ export default function UserProfile() {
           )
         ).then(items => {
           setPurchases(items);
-          if (user) {
-            setUser(prev => ({ ...prev, stats: { ...prev.stats, purchases: items.length } }));
-          }
+          setUser(prev => prev ? { ...prev, stats: { ...prev.stats, purchases: items.length } } : prev);
         }).catch(error => {
           console.error('エラー発生 : ', error);
         });
@@ -101,9 +99,7 @@ export default function UserProfile() {
           )
         ).then(items => {
           setFavorites(items);
-          if (user) {
-            setUser(prev => ({ ...prev, stats: { ...prev.stats, favorites: items.length } }));
-          }
+          setUser(prev => prev ? { ...prev, stats: { ...prev.stats, favorites: items.length } } : prev);
         }).catch(error => {
           console.error('エラー発生 : ', error);
         });

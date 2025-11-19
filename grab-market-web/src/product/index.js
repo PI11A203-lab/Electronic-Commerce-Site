@@ -17,34 +17,65 @@ export default function ProductPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     axios
-      .get(`${API_URL}/products/${id}`)
+      .get(`${API_URL}/api/products/${id}`)
       .then((result) => {
-        const product = result.data.product;
-        console.log('Product data:', product); // 디버깅용
+        const product = result.data?.product;
         
+        if (!product) {
+          console.error('Product not found');
+          setDeveloper(null);
+          setLoading(false);
+          return;
+        }
+        
+        const stats = result.data?.stats || {};
+        const tags = result.data?.tags || [];
+        console.log('Product data:', product); // 디버깅용
+        console.log('Stats data:', stats); // 디버깅용
+        console.log('Tags data:', tags); // 디버깅용
+        console.log('Full API response:', result.data); // 디버깅용
+        
+        // 다운로드 수 포맷팅
+        const formatDownloads = (count) => {
+          if (count >= 1000) {
+            return `${(count / 1000).toFixed(1)}k`;
+          }
+          return count.toString();
+        };
+
         // API 응답을 developer 형식으로 변환
         setDeveloper({
           id: product.id,
           name: product.name,
           username: product.name.toLowerCase().replace(/\s+/g, '_'),
           avatar: product.name.substring(0, 2),
-          rank: 1,
-          skill: 95,
+          rank: 1, // 랭킹은 별도로 계산 필요
+          skill: stats.teamwork !== undefined && stats.stability !== undefined && stats.speed !== undefined && stats.creativity !== undefined && stats.productivity !== undefined && stats.maintainability !== undefined
+            ? Math.round((stats.teamwork + stats.stability + stats.speed + stats.creativity + stats.productivity + stats.maintainability) / 6)
+            : 95,
           price: product.price,
-          imageUrl: product.imageUrl, // ← 추가!
-          downloads: '156k',
-          likes: 3421,
-          rating: 4.9,
-          reviewCount: 1234,
-          category: 'NLP',
-          tags: ['AI/ML', 'Expert'],
-          location: 'San Francisco, CA',
-          joined: 'January 2023',
-          responseTime: '< 2 hours',
-          completionRate: '99%',
+          imageUrl: product.imageUrl,
+          downloads: formatDownloads(product.download_count || 0),
+          likes: 0, // API에 없음
+          rating: parseFloat(product.rating_average || 0).toFixed(1),
+          reviewCount: product.rating_count || 0,
+          category: product.category_name || 'NLP',
+          tags: tags.map(tag => tag.name || tag),
+          location: 'San Francisco, CA', // API에 없음
+          joined: product.createdAt ? new Date(product.createdAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : 'January 2023',
+          responseTime: '< 2 hours', // API에 없음
+          completionRate: '99%', // API에 없음
           bio: product.description || 'Specialized in building production-ready AI systems.',
-          hexagonStats: [
+          hexagonStats: stats.teamwork !== undefined ? [
+            { stat: 'Teamwork', value: stats.teamwork },
+            { stat: 'Stability', value: stats.stability },
+            { stat: 'Speed', value: stats.speed },
+            { stat: 'Creativity', value: stats.creativity },
+            { stat: 'Productivity', value: stats.productivity },
+            { stat: 'Maintainability', value: stats.maintainability }
+          ] : [
             { stat: 'Technical', value: 98 },
             { stat: 'Communication', value: 95 },
             { stat: 'Creativity', value: 92 },
@@ -59,15 +90,45 @@ export default function ProductPage() {
       })
       .catch((error) => {
         console.error('エラー発生 : ', error);
+        console.error('Error response:', error.response); // 디버깅용
+        console.error('Error message:', error.message); // 디버깅용
+        console.error('API URL:', `${API_URL}/api/products/${id}`); // 디버깅용
+        
+        // 400 에러인 경우 상세 메시지 표시
+        if (error.response?.status === 400) {
+          const errorMessage = error.response?.data?.error || '상품을 찾을 수 없습니다';
+          console.error('API Error:', errorMessage);
+        }
+        
+        setDeveloper(null);
         setLoading(false);
       });
   }, [id]);
 
-  if (loading || !developer) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <div className="text-xl text-gray-600">Loading...</div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!developer) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-xl text-gray-600 mb-4">商品が見つかりませんでした</div>
+          <div className="text-gray-500 mb-2">商品ID: {id}</div>
+          <div className="text-sm text-gray-400">
+            API: {API_URL}/api/products/{id}
+          </div>
+          <div className="mt-4">
+            <a href="/" className="text-blue-600 hover:underline">
+              メインページに戻る
+            </a>
+          </div>
         </div>
       </div>
     );
