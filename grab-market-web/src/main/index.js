@@ -36,13 +36,14 @@ function MainPage() {
   // 카테고리 정의 (동적으로 count 계산)
   const categories = useMemo(() => {
     const baseCategories = [
-      { id: 'all', name: 'すべて' },
-      { id: 'fe', name: 'フロントエンド' },
-      { id: 'be', name: 'バックエンド' },
-      { id: 'design', name: 'イメージ' },
-      { id: 'mg', name: '設計・マネジメント' },
-      { id: 'inf', name: 'インフラ' },
-      { id: 'sec', name: 'セキュリティ' },
+      { id: 'all', name: 'すべて', icon: '/images/icons/all.png' },
+      { id: 'fe', name: 'フロントエンド', icon: '/images/icons/fe.png' },
+      { id: 'be', name: 'バックエンド', icon: '/images/icons/be.png' },
+      { id: 'design', name: 'イメージ', icon: '/images/icons/design.png' },
+      { id: 'mg', name: '設計・マネジメント', icon: '/images/icons/mg.png' },
+      { id: 'inf', name: 'インフラ', icon: '/images/icons/inf.png' },
+      { id: 'sec', name: 'セキュリティ', icon: '/images/icons/sec.png' },
+      { id: 'doc', name: 'ドキュメント', icon: '/images/icons/doc.png' },
     ];
 
     // 각 카테고리별 상품 수 계산 (랭킹과 별개로 전체 데이터)
@@ -144,9 +145,9 @@ function MainPage() {
       sort: sortBy
     };
 
-    // "すべて" 카테고리일 때만 페이지네이션 적용 (10개씩)
+    // "すべて" 카테고리일 때만 페이지네이션 적용 (12개씩)
     if (selectedCategory === 'all') {
-      params.limit = 10;
+      params.limit = 12;
       params.page = currentPage;
     } else {
       params.limit = 100;
@@ -282,8 +283,8 @@ function MainPage() {
               </div>
             ) : (
               <>
-                {/* 고정 Top 3 랭킹 */}
-                {topRankingProducts.length > 0 && (
+                {/* 고정 Top 3 랭킹 ("すべて" 카테고리일 때만 표시) */}
+                {selectedCategory === 'all' && topRankingProducts.length > 0 && (
                   <RankingSection topProducts={topRankingProducts} />
                 )}
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { MapPin, Calendar, Clock, Award } from 'lucide-react';
 
-export default function PriceSidebar({ developer }) {
+export default function PriceSidebar({ developer, onBuyNow, onAddToCart }) {
   return (
     <div className="bg-white rounded-2xl border border-gray-200 p-6 sticky top-24">
       <div className="mb-6">
@@ -10,11 +10,17 @@ export default function PriceSidebar({ developer }) {
           ¥{developer.price.toLocaleString()}
         </div>
       </div>
-      <button className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold text-lg hover:shadow-xl transition mb-3">
+      <button 
+        onClick={onBuyNow}
+        className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold text-lg hover:shadow-xl transition mb-3"
+      >
         今すぐ買う
       </button>
       
-      <button className="w-full py-4 border-2 border-gray-300 rounded-xl font-bold hover:border-gray-400 hover:bg-gray-50 transition">
+      <button 
+        onClick={onAddToCart}
+        className="w-full py-4 border-2 border-gray-300 rounded-xl font-bold hover:border-gray-400 hover:bg-gray-50 transition"
+      >
         カートに入れる
       </button>
       <div className="mt-6 pt-6 border-t border-gray-200 space-y-4">

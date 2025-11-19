@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import ProductHeader from './components/ProductHeader';
 import ProfileHeader from './components/ProfileHeader';
@@ -11,6 +11,7 @@ import "./index.css";
 
 export default function ProductPage() {
   const { id } = useParams();
+  const history = useHistory();
   const [activeTab, setActiveTab] = useState('overview');
   const [isLiked, setIsLiked] = useState(false);
   const [developer, setDeveloper] = useState(null);
@@ -113,6 +114,39 @@ export default function ProductPage() {
       });
   }, [id]);
 
+  // 장바구니에 상품 추가하는 함수
+  const addToCart = (productId) => {
+    try {
+      const savedCart = localStorage.getItem('cart');
+      let cartItemIds = savedCart ? JSON.parse(savedCart) : [];
+      
+      // 이미 장바구니에 있는지 확인
+      if (!cartItemIds.includes(productId)) {
+        cartItemIds.push(productId);
+        localStorage.setItem('cart', JSON.stringify(cartItemIds));
+      }
+    } catch (error) {
+      console.error('Failed to add to cart:', error);
+    }
+  };
+
+  // "今すぐ買う" 버튼 클릭 핸들러 - 장바구니에 추가하지 않고 바로 구매 페이지로 이동
+  const handleBuyNow = () => {
+    if (developer && developer.id) {
+      // URL 파라미터로 상품 ID 전달 (바로 구매 모드)
+      history.push(`/purchase?buyNow=${developer.id}`);
+    }
+  };
+
+  // "カートに入れる" 버튼 클릭 핸들러
+  const handleAddToCart = () => {
+    if (developer && developer.id) {
+      addToCart(developer.id);
+      // 성공 메시지 표시 (선택사항)
+      alert('カートに追加しました');
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -172,7 +206,11 @@ export default function ProductPage() {
 
           {/* 사이드바 */}
           <div className="space-y-6">
-            <PriceSidebar developer={developer} />
+            <PriceSidebar 
+              developer={developer} 
+              onBuyNow={handleBuyNow}
+              onAddToCart={handleAddToCart}
+            />
             <TrustBadges />
           </div>
         </div>

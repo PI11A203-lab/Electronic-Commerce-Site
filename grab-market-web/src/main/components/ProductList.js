@@ -19,19 +19,18 @@ const ProductList = ({ products }) => {
             
             <div className="product-header">
               <div className="product-avatar-small">
-                {product.name.substring(0, 2)}
+                <img
+                  src={`${API_URL}/${product.imageUrl}`}
+                  alt={product.name}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.textContent = product.name.substring(0, 2);
+                  }}
+                />
               </div>
               <button className="btn-favorite">
                 <Star className="favorite-icon" />
               </button>
-            </div>
-
-            <div className="product-image-wrapper">
-              <img
-                className="product-image"
-                src={`${API_URL}/${product.imageUrl}`}
-                alt={product.name}
-              />
             </div>
 
             <h4 className="product-name">{product.name}</h4>

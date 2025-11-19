@@ -32,6 +32,13 @@ const RankingSection = ({ topProducts }) => {
                 src={`${API_URL}/${product.imageUrl}`} 
                 alt={product.name}
                 className="ranking-avatar-img"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  const fallback = document.createElement('div');
+                  fallback.className = 'ranking-avatar-fallback';
+                  fallback.textContent = product.name.substring(0, 2);
+                  e.target.parentElement.appendChild(fallback);
+                }}
               />
             </div>
 
