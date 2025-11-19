@@ -94,10 +94,18 @@ export default function ProductPage() {
         console.error('Error message:', error.message); // 디버깅용
         console.error('API URL:', `${API_URL}/api/products/${id}`); // 디버깅용
         
-        // 400 에러인 경우 상세 메시지 표시
-        if (error.response?.status === 400) {
-          const errorMessage = error.response?.data?.error || '상품을 찾을 수 없습니다';
-          console.error('API Error:', errorMessage);
+        // 에러 응답이 있는 경우 상세 정보 출력
+        if (error.response) {
+          const status = error.response.status;
+          const errorData = error.response.data;
+          console.error('Status:', status);
+          console.error('Error Data:', errorData);
+          
+          // SQL 에러인 경우
+          if (errorData?.sql || errorData?.sqlMessage) {
+            console.error('SQL Error:', errorData.sqlMessage);
+            console.error('SQL Query:', errorData.sql);
+          }
         }
         
         setDeveloper(null);
@@ -118,11 +126,19 @@ export default function ProductPage() {
   if (!developer) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
+        <div className="text-center max-w-md">
           <div className="text-xl text-gray-600 mb-4">商品が見つかりませんでした</div>
           <div className="text-gray-500 mb-2">商品ID: {id}</div>
-          <div className="text-sm text-gray-400">
+          <div className="text-sm text-gray-400 mb-4">
             API: {API_URL}/api/products/{id}
+          </div>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 text-left">
+            <div className="text-sm text-red-800 font-semibold mb-2">エラー情報:</div>
+            <div className="text-xs text-red-600">
+              サーバーエラーが発生しました。データベースの問題の可能性があります。
+              <br />
+              ブラウザのコンソールで詳細を確認してください。
+            </div>
           </div>
           <div className="mt-4">
             <a href="/" className="text-blue-600 hover:underline">
