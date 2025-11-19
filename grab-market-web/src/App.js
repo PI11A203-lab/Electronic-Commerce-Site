@@ -1,31 +1,17 @@
 import "./App.css";
 import MainPageComponent from "./main";
-import { Switch, Route, Link, useHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import ProductPage from "./product";
 import UploadPage from "./upload";
-import { Button } from "antd";
-import { DownloadOutlined } from "@ant-design/icons";
+import LoginPage from "./login";
+import UserProfile from "./profile";
+import TeamBuilder from "./team";
+import PurchasePage from "./purchase";
+import PurchaseConfirmation from "./confirmation";
 
 function App() {
-  const history = useHistory();
   return (
     <div>
-      <div id="header">
-        <div id="header-area">
-          <Link to="/">
-            <img src="/images/icons/logo.png" />
-          </Link>
-          <Button
-            size="large"
-            onClick={function () {
-              history.push("/upload");
-            }}
-            icon={<DownloadOutlined />}
-          >
-            <Link to="/upload">商品アップロード</Link>
-          </Button>
-        </div>
-      </div>
       <div id="body">
         <Switch>
           <Route exact={true} path="/">
@@ -36,6 +22,21 @@ function App() {
           </Route>
           <Route exact={true} path="/upload">
             <UploadPage />
+          </Route>
+          <Route exact={true} path="/login">
+            <LoginPage />
+          </Route>
+          <Route exact={true} path="/profile">
+            <UserProfile />
+          </Route>
+          <Route exact={true} path="/team">
+            <TeamBuilder />
+          </Route>
+          <Route exact={true} path="/purchase">
+            <PurchasePage />
+          </Route>
+          <Route exact={true} path="/confirmation">
+            <PurchaseConfirmation />
           </Route>
         </Switch>
       </div>

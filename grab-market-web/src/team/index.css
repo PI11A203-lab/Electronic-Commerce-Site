@@ -1,0 +1,568 @@
+.team-builder {
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+/* 헤더 */
+.team-header {
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1.25rem 4rem;
+}
+
+.team-header .header-content {
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.profile-header .btn-back {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #374151;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.profile-header .btn-back:hover {
+  color: #3b82f6;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.logo-icon {
+  font-size: 1.875rem;
+}
+
+.logo-text {
+  background: linear-gradient(to right, #2563eb, #9333ea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gray-700 {
+  color: #374151;
+}
+
+.hover\:text-gray-900:hover {
+  color: #111827;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+button.text-gray-700 {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-size: 1rem;
+}
+
+/* 메인 */
+.team-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.team-intro {
+  margin-bottom: 2rem;
+}
+
+.team-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.team-subtitle {
+  font-size: 1.25rem;
+  color: #4b5563;
+}
+
+.team-content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+/* 사용 가능한 개발자 섹션 */
+.available-developers-section {
+  grid-column: 1;
+}
+
+.section-card {
+  background-color: white;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.developers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* 개발자 카드 */
+.developer-card {
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  transition: all 0.2s;
+}
+
+.developer-card:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.developer-card-selected {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.developer-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.developer-card-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.developer-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: white;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  font-weight: bold;
+  font-size: 1.125rem;
+  padding: 0.15rem;
+}
+
+/* 개발자 아바타 이미지 스타일 */
+.developer-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.developer-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.developer-name {
+  font-weight: bold;
+  font-size: 1.125rem;
+}
+
+.developer-category {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.developer-stats-mini {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.stat-label {
+  color: #6b7280;
+}
+
+.developer-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.developer-price {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.btn-add,
+.btn-remove {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-add {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-add:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-add:disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.btn-remove {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-remove:hover {
+  background-color: #dc2626;
+}
+
+.btn-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* 팀 사이드바 */
+.team-sidebar {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-card {
+  background-color: white;
+  border-radius: 1rem;
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+  position: sticky;
+  top: 6rem;
+}
+
+.sidebar-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.team-count {
+  font-size: 0.875rem;
+  font-weight: normal;
+  color: #4b5563;
+}
+
+.empty-team {
+  text-align: center;
+  padding: 3rem 0;
+  color: #9ca3af;
+}
+
+.empty-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 0.75rem;
+  opacity: 0.5;
+}
+
+.empty-subtitle {
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* 선택된 팀원 목록 */
+.selected-team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.team-member-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background-color: #f9fafb;
+  border-radius: 0.75rem;
+}
+
+.team-member-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: white;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+  font-weight: bold;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+  padding: 0.15rem;
+}
+
+/* 팀원 아바타 이미지 스타일 */
+.team-member-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.team-member-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.team-member-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-member-price {
+  font-size: 0.75rem;
+  color: #4b5563;
+}
+
+.team-member-remove {
+  padding: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+}
+
+.team-member-remove:hover {
+  background-color: #fee2e2;
+}
+
+.remove-icon {
+  width: 1rem;
+  height: 1rem;
+  color: #dc2626;
+}
+
+/* 팀 스탯 차트 */
+.team-stats-chart {
+  margin-bottom: 1.5rem;
+}
+
+.chart-title {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chart-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* 시너지 스코어 */
+.synergy-score {
+  background: linear-gradient(to bottom right, #3b82f6, #9333ea);
+  color: white;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.synergy-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.synergy-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.synergy-label {
+  font-weight: 600;
+  color: white;
+}
+
+.synergy-value {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+
+.synergy-message {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  margin-top: 0.25rem;
+}
+
+/* 가격 섹션 */
+.team-price-section {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.price-label {
+  color: #4b5563;
+}
+
+.price-value {
+  font-size: 1.875rem;
+  font-weight: bold;
+}
+
+/* 확정 버튼 */
+.btn-confirm {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to right, #2563eb, #9333ea);
+  color: white;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.btn-confirm:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* 팁 */
+.team-tip {
+  background-color: #fefce8;
+  border: 1px solid #fde047;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.tip-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.tip-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #ca8a04;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.tip-text {
+  font-size: 0.875rem;
+}
+
+.tip-title {
+  font-weight: 600;
+  color: #78350f;
+  margin-bottom: 0.25rem;
+}
+
+.tip-description {
+  color: #854d0e;
+}
+
+/* 반응형 */
+@media (min-width: 1920px) {
+  .team-header {
+    padding: 1.5rem 6rem;
+  }
+}
+
+@media (max-width: 1536px) {
+  .team-header {
+    padding: 1.25rem 3rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .team-header {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .team-header {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-header {
+    padding: 0.75rem;
+  }
+}
